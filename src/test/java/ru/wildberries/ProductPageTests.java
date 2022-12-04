@@ -1,7 +1,5 @@
 package ru.wildberries;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,8 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class ProductPageTests {
 
 
-    @DisplayName("Параметризованный тест")
-    @ParameterizedTest(name = "Тест {0}")
+    @ParameterizedTest(name = "Артикул {1} соответсвует цвету {0}")
     @MethodSource("namedArguments")
     void colorProduct(String color, String SKU) {
         open("https://www.wildberries.ru/catalog/61914204/detail.aspx?targetUrl=GP");
