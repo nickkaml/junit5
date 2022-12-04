@@ -1,5 +1,6 @@
 package ru.funmask;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,12 +12,16 @@ public class AuthorizationForm {
 
     String email = "test@test.ru";
 
+    @BeforeEach
+    void openAuthorizationPage() {
+        open("https://fun-mask.ru/my-account/");
+
+    }
+
 
     @DisplayName("Wrong password")
     @Test
     void wrongPassword() {
-        open("https://fun-mask.ru/my-account/");
-        //Configuration.holdBrowserOpen = true;
 
         String password = "12345678";
 
@@ -24,14 +29,13 @@ public class AuthorizationForm {
         $("#password").setValue(password);
         $(".woocommerce-form-login__submit").click();
 
-        $(".woocommerce-notices-wrapper").shouldHave(text("Ошибка"));
+        $(".woocommerce-error").shouldHave(text("Пароль"));
     }
+
 
     @DisplayName("Right password")
     @Test
     void rightPassword() {
-        open("https://fun-mask.ru/my-account/");
-        //Configuration.holdBrowserOpen = true;
 
         String password = "test2tesT3";
 
@@ -39,7 +43,7 @@ public class AuthorizationForm {
         $("#password").setValue(password);
         $(".woocommerce-form-login__submit").click();
 
-        $(".woocommerce-notices-wrapper").shouldNotHave(text("Ошибка"));
+        $(".woocommerce-MyAccount-content").shouldHave(text("Добро пожаловать"));
     }
 
 }
