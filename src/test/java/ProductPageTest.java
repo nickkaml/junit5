@@ -1,5 +1,3 @@
-package ru.wildberries;
-
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -10,7 +8,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class ProductPageTests {
+public class ProductPageTest {
 
 
     @ParameterizedTest(name = "Артикул {1} соответсвует цвету {0}")
